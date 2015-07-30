@@ -39,9 +39,11 @@
     if (res.statusCode >= 200 && res.statusCode < 300){
       var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
       NSLog("Response ==> %@", responseData);
+      //方法1 接收回來的資料
       list = NSMutableArray()
       list.addObject(responseData)
                 
+      //方法2 接收回來的資料          
       var parkData = parkingData()
       parkingList = parkData.getMovieDataFromArrar()
                 
