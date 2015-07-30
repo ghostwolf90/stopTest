@@ -155,8 +155,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 
                 var parkData = parkingData()
                 parkingList = parkData.getMovieDataFromArrar()
+                
                 for result in parkingList{
-                    let title = result.objectForKey("city") as! NSString
+                    let title = result.objectForKey("parking_name") as! NSString
                     titleStringArray.addObject(title)
                 }
                 
