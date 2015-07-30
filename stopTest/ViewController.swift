@@ -46,22 +46,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         
     }
     
-    /*
+    
     override func viewDidAppear(animated: Bool) {
         point = MKPointAnnotation()
-        point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
+        //point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude) 120.66629
+        point.coordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
         point.title = "台中市"
         point.subtitle = "所在位置"
         self.myMap.addAnnotation(point)
     
         //放大效果
-        var track = CLLocationCoordinate2D(latitude: lattiude!, longitude: longitude!)
+        var track = CLLocationCoordinate2D(latitude: 24.136299, longitude: 120.66629)
         var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         var region = MKCoordinateRegion(center: track, span: span)
-
-    
-        self.myMap.centerCoordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
-    } */
+        
+        //self.myMap.centerCoordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
+        self.myMap.centerCoordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -172,12 +173,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? UITableViewCell
-        if(cell == nil){
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        }
+        let cellIdentifier = "Cell"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as? CustomTableViewCell
         
-        cell!.textLabel?.text = titleStringArray.objectAtIndex(indexPath.row) as? String
+        //var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? CustomTableViewCell
+        
+        if(cell == nil){
+            cell = CustomTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        }
+        cell!.parkingNameLable.text = titleStringArray.objectAtIndex(indexPath.row) as? String
+        cell!.parkingAddress.text = "123456"
+        
+        //cell!.textLabel?.text = titleStringArray.objectAtIndex(indexPath.row) as? String
         
         return cell!
     }
