@@ -17,7 +17,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
     var locationStatus : NSString = "Not Started"
-    var list:NSMutableArray!
     var point:MKPointAnnotation!
     var c:CLLocation!
     var parkingList = NSArray()
@@ -128,7 +127,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         NSLog("PostData: %@", post);
         
         var url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-        //var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -151,8 +149,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
             if (res.statusCode >= 200 && res.statusCode < 300){
                 var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
-                list = NSMutableArray()
-                list.addObject(responseData)
                 
                 var parkData = parkingData()
                 parkingList = parkData.getMovieDataFromArrar()
