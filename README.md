@@ -3,17 +3,54 @@
 爬文的過程發現，swift處理資料庫這段，中文資料太少了，希望貢獻一己之力。
 
 ## 使用技術部份(未編輯)
-* [不使用segue畫面切換（Dot-use segue）](#dot-use-segue)
+* [以Post方式傳送資料給網站（Post to Server）](#post-to-server)
 
-### 不使用segue畫面切換（Dot-use segue）
+### 以Post方式傳送資料給網站（Post to Server）
 
-透過語法去載入指定的View Controller。
+1.首先須建立好一個Server，本專案是用php來開發
+2.http request使用的類別為NSMutableURLRequest，他是繼承NSURLRequest類別
 
-**譬如應該如下這樣寫：**  
+**程式段落：**  
 ```swift
-  var vc = self.storyboard?.instantiateViewControllerWithIdentifier("showWeb") as! showWebViewController
-  var nc = self.storyboard?.instantiateViewControllerWithIdentifier("nc") as! UINavigationController
-  nc.pushViewController(vc, animated: false)
-  vc.htmlUrl = tempQrcode
-  self.showDetailViewController(nc, sender: self)
+  var post:NSString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
+  NSLog("PostData: %@", post);
+        
+  var url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
+  //var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+  var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
+  var postLength:NSString = String( postData.length )
+  var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        
+  request.HTTPMethod = "POST"
+  request.HTTPBody = postData
+  request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+  request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+  request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+  var reponseError: NSError?
+  var bodyBata = "data=something"
+  var response: NSURLResponse? = nil
+  var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+  if ( urlData != nil ) {
+    let res = response as! NSHTTPURLResponse!
+    NSLog("Response code: %ld", res.statusCode);
+            
+    if (res.statusCode >= 200 && res.statusCode < 300){
+      var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+      NSLog("Response ==> %@", responseData);
+      list = NSMutableArray()
+      list.addObject(responseData)
+                
+      var parkData = parkingData()
+      parkingList = parkData.getMovieDataFromArrar()
+                
+      for result in parkingList{
+        let title = result.objectForKey("parking_name") as! NSString
+        titleStringArray.addObject(title)
+      }
+                
+    }
+  }
+  return "01"
 ```
