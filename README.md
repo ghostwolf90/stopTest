@@ -16,7 +16,6 @@
   NSLog("PostData: %@", post);
         
   var url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-  //var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
   var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
   var postLength:NSString = String( postData.length )
   var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
