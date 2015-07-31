@@ -151,13 +151,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 NSLog("Response ==> %@", responseData);
                 
                 var parkData = parkingData()
-                parkingList = parkData.getMovieDataFromArrar()
-                
-                for result in parkingList{
-                    let title = result.objectForKey("parking_name") as! NSString
-                    titleStringArray.addObject(title)
-                }
-                
+                parkingList = parkData.getParkList()
             }
         }
         return "01"
@@ -165,23 +159,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return titleStringArray.count
+        return parkingList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as? CustomTableViewCell
         
-        //var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("Cell") as? CustomTableViewCell
-        
         if(cell == nil){
             cell = CustomTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         }
-        cell!.parkingNameLable.text = titleStringArray.objectAtIndex(indexPath.row) as? String
-        cell!.parkingAddress.text = "123456"
         
-        //cell!.textLabel?.text = titleStringArray.objectAtIndex(indexPath.row) as? String
-        
+        cell!.parkingNameLable.text = parkingList[indexPath.row].title
+        cell!.parkingAddress.text = parkingList[indexPath.row].address as! NSString as String
+       // cell!.parkingAddress.text = titleStringArray.objectAtIndex(indexPath.row) as? String
+    
         return cell!
     }
     

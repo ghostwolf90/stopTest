@@ -15,7 +15,7 @@ class parkingData: NSObject {
     
     override init() {
         super.init()
-        //getMovieDataFromArrar()
+        getMovieDataFromArrar()
     }
     
     //for model
@@ -26,15 +26,19 @@ class parkingData: NSObject {
         parking = NSArray(array: json as! NSArray)
         
         return parking
-        
     }
     
     func getParkList()->NSArray{
         var list : [MainData] = Array()
         
-        
         for result in parking{
             var mainData = MainData()
+            let title = result.objectForKey("parking_name") as! NSString
+            let address = result.objectForKey("parking_address") as! NSString
+            
+            //有資料才show
+            mainData.title = title as String
+            mainData.address = address as String
             
             list.append(mainData)
         }
