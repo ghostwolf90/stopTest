@@ -29,23 +29,48 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuZ-ss-ybj" id="6SL-Je-Lep">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="parking_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP8-mi-Vl5">
-                                                    <rect key="frame" x="22" y="8" width="536" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="parking_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP8-mi-Vl5">
+                                                    <rect key="frame" x="22" y="8" width="125" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="bnL-PP-VvO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="parking_address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVa-Sp-mmV">
+                                                    <rect key="frame" x="22" y="45" width="550" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="rsB-fO-pxF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="parking_address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVa-Sp-mmV">
-                                                    <rect key="frame" x="22" y="45" width="543" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toll" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-dJ-ORA">
+                                                    <rect key="frame" x="572" y="8" width="20" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="1Zv-Ox-Nl6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="312-IW-gTF"/>
+                                                <constraint firstItem="GP8-mi-Vl5" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="GKC-fI-sDT"/>
+                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="top" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="8" symbolic="YES" id="IM8-h0-14h"/>
+                                                <constraint firstAttribute="bottom" secondItem="fdp-dJ-ORA" secondAttribute="bottom" constant="50" id="VUA-IS-BCj"/>
+                                                <constraint firstAttribute="trailing" secondItem="fdp-dJ-ORA" secondAttribute="trailing" constant="8" id="Zgh-Of-evq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="HVa-Sp-mmV" secondAttribute="trailing" constant="20" id="yG3-BP-hJX"/>
+                                                <constraint firstAttribute="bottom" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="42" id="zJL-hS-7iI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="parkingAddress" destination="HVa-Sp-mmV" id="Ucy-bS-8E9"/>
                                             <outlet property="parkingNameLable" destination="GP8-mi-Vl5" id="Io5-j8-clr"/>
+                                            <outlet property="tollLable" destination="fdp-dJ-ORA" id="flr-qj-eFr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

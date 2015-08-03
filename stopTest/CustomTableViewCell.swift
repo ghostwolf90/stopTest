@@ -12,6 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var parkingNameLable: UILabel!
     @IBOutlet weak var parkingAddress: UILabel!
+    @IBOutlet weak var tollLable: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

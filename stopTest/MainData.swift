@@ -9,27 +9,20 @@
 import UIKit
 
 class MainData: NSObject {
-    var descriptionFilterHtml : String
-    var showTimeList : NSArray
-    var address: String
     var title: String
-    var name : String
+    var addressP: String
+    var toll_car : String
     var time : String
-    var location : String
     var lattitude : Double
     var longitude : Double
     
     override init(){
-        descriptionFilterHtml   = ""
-        showTimeList            = NSArray()
-        address                 = ""
+        addressP                = ""
         title                   = ""
-        name                    = ""
+        toll_car                = ""
         time                    = ""
-        location                = ""
         lattitude               = 0.0
-        longitude               = 0.0
-        
+        longitude               = 0.0        
     }
     
 }

@@ -20,7 +20,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var point:MKPointAnnotation!
     var c:CLLocation!
     var parkingList = NSArray()
-    var titleStringArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,8 +152,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 var parkData = parkingData()
                 parkingList = parkData.getParkList()
             }
+            return "01"
+        }else{
+            println("Cannot connect!")
+            return "02"
         }
-        return "01"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,16 +165,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as? CustomTableViewCell
         
-        if(cell == nil){
-            cell = CustomTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        }
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
         
         cell!.parkingNameLable.text = parkingList[indexPath.row].title
-        cell!.parkingAddress.text = parkingList[indexPath.row].address as! NSString as String
-       // cell!.parkingAddress.text = titleStringArray.objectAtIndex(indexPath.row) as? String
+        
+        //cell!.parkingAddress.text = parkingList[indexPath.row].address as! NSString as String
+        //cell!.parkingAddress.text = parkingList[indexPath.row].toll_car
     
         return cell!
     }
