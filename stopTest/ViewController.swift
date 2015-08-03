@@ -166,9 +166,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
         
+        //問題1 parkingList應該是 parkingData.swift裡面的mainData的值
+        //但是parkingList[indexPath.row] 沒有 addressP
         cell!.parkingNameLable.text = parkingList[indexPath.row].title
+        cell!.parkingAddress.text = parkingList[indexPath.row].addressP
         
         //cell!.parkingAddress.text = parkingList[indexPath.row].address as! NSString as String
         //cell!.parkingAddress.text = parkingList[indexPath.row].toll_car
