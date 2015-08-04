@@ -42,6 +42,4 @@ class parkingData: NSObject {
         return list
     }
     
-    
-    
 }

@@ -99,11 +99,11 @@
 				5FDCCA411B606FEA00135D45 /* AppDelegate.swift */,
 				5FDCCA431B606FEA00135D45 /* ViewController.swift */,
 				5FD796D81B6AD63E00804697 /* CustomTableViewCell.swift */,
+				5FD796D31B66E6E700804697 /* model */,
 				5FDCCA451B606FEA00135D45 /* Main.storyboard */,
 				5FDCCA481B606FEA00135D45 /* Images.xcassets */,
 				5FDCCA4A1B606FEA00135D45 /* LaunchScreen.xib */,
 				5FDCCA3F1B606FEA00135D45 /* Supporting Files */,
-				5FD796D31B66E6E700804697 /* model */,
 			);
 			path = stopTest;
 			sourceTree = "<group>";
