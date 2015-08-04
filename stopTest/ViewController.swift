@@ -19,7 +19,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var locationStatus : NSString = "Not Started"
     var point:MKPointAnnotation!
     var c:CLLocation!
-    var parkingList = NSArray()
+    
+    var parkingList = NSArray() as! [MainData]
+    //也行 var parkingList = [MainData] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +36,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         location.startUpdatingLocation()
         
         if (postToServerFunction() == "01"){
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "OK!"
-            alertView.message = "成功連線"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            println("連線成功")
         }
         
     }
-    
     
     override func viewDidAppear(animated: Bool) {
         point = MKPointAnnotation()
@@ -150,7 +146,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 NSLog("Response ==> %@", responseData);
                 
                 var parkData = parkingData()
-                parkingList = parkData.getParkList()
+                parkingList = parkData.getParkList() as! [MainData]
             }
             return "01"
         }else{
@@ -168,14 +164,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
         
-        //問題1 parkingList應該是 parkingData.swift裡面的mainData的值
-        //但是parkingList[indexPath.row] 沒有出現 addressP
         cell!.parkingNameLable.text = parkingList[indexPath.row].title
         cell!.parkingAddress.text = parkingList[indexPath.row].addressP
+        cell!.tollLable.text = parkingList[indexPath.row].toll_car
         
-        //cell!.parkingAddress.text = parkingList[indexPath.row].address as! NSString as String
-        //cell!.parkingAddress.text = parkingList[indexPath.row].toll_car
-    
         return cell!
     }
     
