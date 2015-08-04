@@ -121,6 +121,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         var post:NSString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
         NSLog("PostData: %@", post);
         
+        
         var url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
         var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
         var postLength:NSString = String( postData.length )
@@ -145,6 +146,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
                 
+                /*
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+                    var parkData = parkingData()
+                    self.parkingList = parkData.getParkList() as! [MainData]
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
+                }*/
                 var parkData = parkingData()
                 parkingList = parkData.getParkList() as! [MainData]
             }
