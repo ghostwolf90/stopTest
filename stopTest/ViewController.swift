@@ -153,7 +153,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                     dispatch_async(dispatch_get_main_queue()) {
                         self.tableView.reloadData()
                     }
-                }*/
+                } */
                 var parkData = parkingData()
                 parkingList = parkData.getParkList() as! [MainData]
             }
@@ -164,12 +164,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return parkingList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
         
