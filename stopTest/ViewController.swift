@@ -145,21 +145,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
             if (res.statusCode >= 200 && res.statusCode < 300){
                 var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
-                
+                /*
                 var queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
                 dispatch_async(queue, { () -> Void in
                     var parkData = parkingData()
                     self.parkingList = parkData.getParkList() as! [MainData]
                 })
                 
-                /*
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
                 })*/
                 
                 
-                //var parkData = parkingData()
-                //parkingList = parkData.getParkList() as! [MainData]
+                var parkData = parkingData()
+                parkingList = parkData.getParkList() as! [MainData]
             }
             return "01"
         }else{
