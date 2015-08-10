@@ -39,7 +39,7 @@ class parkingData: NSObject {
             let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
             dispatch_async(dispatch_get_main_queue()) {
                 //reload ui here! 或是做你拿到資料後想做的處理
-                let json : AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) /*<註2>as? [String: String]*/
+                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)/*<註2>as? [String: String]*/
                 
                 /*<註3>: 可以寫成Swift的 if let語法就可以了*/
                 /*if (json != nil){
@@ -67,9 +67,9 @@ class parkingData: NSObject {
                 }
                 
             }
-        }
+        }*/
         
-        
+        /*
         let data = NSData(contentsOfURL: parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
                 
