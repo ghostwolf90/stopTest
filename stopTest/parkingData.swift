@@ -23,18 +23,15 @@ class parkingData: NSObject {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             //把你data的那一行寫到這裡
             let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-            
             dispatch_async(dispatch_get_main_queue()) {
                 //reload ui here! 或是做你拿到資料後想做的處理
-                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil) as? [String: String]
-                if (json != nil){
-                    self.parking = NSArray(array: json as! NSArray)
-                }
+                let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
+                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
+                
+                self.parking = NSArray(array: json as! NSArray)
                 
             }
-            
         }
-        
         /*
         let data = NSData(contentsOfURL: parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
