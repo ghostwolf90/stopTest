@@ -23,7 +23,9 @@ import UIKit
 
 class parkingData: NSObject {
     private var parking = [AnyObject]() /*<註1>代表宣告一個存放任意型別物件的Array*/
-    private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
+    //private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
+    private let parkingURL: NSURL = NSURL(string: "http://laibit.lionfree.net/parking.txt")!
+    
     
     override init() {
         super.init()
@@ -32,7 +34,6 @@ class parkingData: NSObject {
     
     //for model
     func getMovieDataFromArrar() ->NSArray{
-        
         //使用Concurrent派遣佇列
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             //把你data的那一行寫到這裡
@@ -47,34 +48,23 @@ class parkingData: NSObject {
                 }*/
                 
                 if let nonull_json = json as? [AnyObject] {
-                    self.parking = nonull_json/*NSArray(array: json as! NSArray)*/
+                    self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
                 }else{
                     /*<註4>*/
                 }
                 
             }
         }
-        /*
-        //舊段落
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
-            //把你data的那一行寫到這裡
-            let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-            dispatch_async(dispatch_get_main_queue()) {
-                //reload ui here! 或是做你拿到資料後想做的處理
-                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as? [String: String]
-                if (json != nil){
-                    self.parking = NSArray(array: json as! NSArray) as [(AnyObject)]
-                }
-                
-            }
-        }*/
-        
+
         /*
         let data = NSData(contentsOfURL: parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
-                
-        parking = NSArray(array: json as! NSArray)
-        */
+        
+        if let nonull_json = json as? [AnyObject] {
+            self.parking = nonull_json/*NSArray(array: json as! NSArray)*/
+        }else{
+        }*/
+
         return parking
     }
     
