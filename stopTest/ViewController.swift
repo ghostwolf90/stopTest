@@ -157,7 +157,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                     self.tableView.reloadData()
                 })*/
                 
-                
                 var parkData = parkingData()
                 parkingList = parkData.getParkList() as! [MainData]
             }
