@@ -26,29 +26,31 @@ class parkingData: NSObject {
     private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
     //private let parkingURL: NSURL = NSURL(string: "http://laibit.lionfree.net/parking.txt")!
     
-    
     override init() {
         super.init()
         //getMovieDataFromArrar()
         getParking( { (parkings:[AnyObject]) -> Void in
             for parking in parkings {
-            
+                var mainData = MainData()
+                mainData.title = parking.objectForKey("parking_name") as! String
+                mainData.addressP = parking.objectForKey("parking_address") as! String
+                mainData.toll_car = parking.objectForKey("toll_car") as! String
             }
         })
     }
     
-    func getParking(completion : (parkings:[AnyObject])->Void){
+    //請外部傳一個closure，讓你的程式在完成的時候可以告知他
+    func getParking(completion : (parkings:[AnyObject]) -> Void){
     
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
             let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
             let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
             if let nonull_json = json as? [AnyObject] {
-                    self.parking = nonull_json
+                self.parking = nonull_json
             }
+            completion(parkings: self.parking)
         }
-        
-        completion(parkings: self.parking )
     }
     
     //for model
