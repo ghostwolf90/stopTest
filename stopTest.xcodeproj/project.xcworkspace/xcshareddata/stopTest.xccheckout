@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C4EB2D4B-659B-481E-8237-85E72189E93F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>stopTest</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>100D36A5221D2DF103DECE7E6E56BE5EDFB5F2B3</key>
 		<string>https://github.com/ghostwolf90/stopTest.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>stopTest.xcodeproj</string>
+	<string>stopTest.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>100D36A5221D2DF103DECE7E6E56BE5EDFB5F2B3</key>

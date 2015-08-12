@@ -28,13 +28,15 @@ class parkingData: NSObject {
     
     override init() {
         super.init()
-        //getMovieDataFromArrar()
+        var list : [MainData] = Array()
         getParking( { (parkings:[AnyObject]) -> Void in
             for parking in parkings {
                 var mainData = MainData()
                 mainData.title = parking.objectForKey("parking_name") as! String
                 mainData.addressP = parking.objectForKey("parking_address") as! String
                 mainData.toll_car = parking.objectForKey("toll_car") as! String
+                
+                list.append(mainData)
             }
         })
     }
@@ -47,14 +49,16 @@ class parkingData: NSObject {
             let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
             let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
             if let nonull_json = json as? [AnyObject] {
-                self.parking = nonull_json
+                self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
+            }else{
+                /*<註4>*/
             }
             completion(parkings: self.parking)
         }
     }
     
     //for model
-    func getMovieDataFromArrar() ->NSArray{
+    func getMovieDataFromArrar() -> [AnyObject] {
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
         //把你data的那一行寫到這裡
@@ -82,7 +86,7 @@ class parkingData: NSObject {
         let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
         
         if let nonull_json = json as? [AnyObject] {
-            self.parking = nonull_json/*NSArray(array: json as! NSArray)*/
+            self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
         }else{
         }*/
 
