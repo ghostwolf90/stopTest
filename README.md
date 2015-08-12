@@ -63,9 +63,9 @@ Array<AnyObject>是完整寫法，[AnyObject]是簡寫，但兩個都會做出�
 ### 閉包 (closure)
 閉包是自包含的函式程式碼區塊，可以在程式碼中被傳遞和使用。 Swift 中的閉包與 C 和 Objective-C 中的程式碼區塊（blocks）以及其他一些程式語言中的 lambdas 函式比較相似。
 
-基本架構closure { (參數) -> 回傳值 in 程式實作 }.
-作為非同步方式，請外部傳一個closure，讓你的程式在完成的時候可以告知他
-非同步觀念，如果你還要等他完成 那跟同步有什麼不同？
+1.基本架構closure { (參數) -> 回傳值 in 程式實作 }
+2.作為非同步方式，請外部傳一個closure，讓你的程式在完成的時候可以告知他
+3.非同步觀念，如果你還要等他完成 那跟同步有什麼不同？
 (有些library在一些function會有一個completion的傳入參數 如果是Facebook 比較愛用completionHandler)
 ```swift
 //請外部傳一個closure，讓你的程式在完成的時候可以告知他
