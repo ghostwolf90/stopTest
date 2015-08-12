@@ -5,6 +5,7 @@
 ## 使用技術部份(未編輯)
 * [以Post方式傳送資料給網站（Post to Server）](#post-to-server)
 * [OC和swift差別 (OC & Swift)] (#oc-and-swift)
+* [閉包 (closure)] (#closure)
 
 ### 以Post方式傳送資料給網站（Post to Server）
 
@@ -58,5 +59,54 @@ NSArray和NSDictionary是Objective-C描述Array和Dictionary用
 語法密糖 就可以寫成 [AnyObject]/[NSObject:AnyObject](語法密糖也可以叫語法糖衣，代表提供另一種好寫的寫法)
 因此就能了解從[AnyObject]，他是描述這個Array可以放AnyObject 也就是任意型別
 Array<AnyObject>是完整寫法，[AnyObject]是簡寫，但兩個都會做出一樣的東西
+
+### 閉包 (closure)
+閉包是自包含的函式程式碼區塊，可以在程式碼中被傳遞和使用。 Swift 中的閉包與 C 和 Objective-C 中的程式碼區塊（blocks）以及其他一些程式語言中的 lambdas 函式比較相似。
+
+基本架構closure { (參數) -> 回傳值 in 程式實作 }
+作為非同步方式，請外部傳一個closure，讓你的程式在完成的時候可以告知他
+非同步觀念，如果你還要等他完成 那跟同步有什麼不同？
+(有些library在一些function會有一個completion的傳入參數 如果是Facebook 比較愛用completionHandler)
+```swift
+//請外部傳一個closure，讓你的程式在完成的時候可以告知他
+//這個例子是沒有東西的
+func getData(completion:()->Void){
+    /*
+       執行非同步
+    */
+    dispatch_async(...){
+    	/* Block A */
+    	//完成的時候，執行completion這個closure
+    	completion()
+    }
+}
+//假設你會產生一些東西(e.g.)server傳下來的東西
+func getData(completion:(parkings:[AnyObject])->Void){
+    /*
+       執行非同步
+    */
+    dispatch_async(...){
+    	/* Block A */
+        let data = /* data from server */
+    	//完成的時候，執行completion這個closure
+    	completion(parkings: data)
+    }
+}
+
+//請外部傳一個closure，讓你的程式在完成的時候可以告知他
+//例子1 在使用的時候就會變成
+getData( { ()->Void in
+  //do something after callback
+})
+
+//例子2 在使用的時候就會變成
+getData( { (parkings:[AnyObject])->Void in
+  //do something after callback
+  for parking in parkings {
+    //do something
+  }
+     
+})
+```
 
 
