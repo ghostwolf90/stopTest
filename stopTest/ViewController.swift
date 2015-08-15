@@ -113,6 +113,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         location.stopUpdatingLocation()
     }
     
+    
     func postToServerFunction() -> String{
         let USERNAME_S = "101"
         let PASSWD_S = "台中"
@@ -158,7 +159,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 })*/
                 
                 var parkData = parkingData()
-                parkingList = parkData.getParkList() as! [MainData]
+                parkData.getParking({ (parkings) -> Void in
+                    parkingList
+                })
+                
+                //parkingList = parkData.getParkList() as! [MainData]
             }
             return "01"
         }else{

@@ -25,10 +25,11 @@ class parkingData: NSObject {
     private var parking = [AnyObject]() /*<註1>代表宣告一個存放任意型別物件的Array*/
     private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
     //private let parkingURL: NSURL = NSURL(string: "http://laibit.lionfree.net/parking.txt")!
+    var list : [MainData] = Array()
     
     override init() {
         super.init()
-        var list : [MainData] = Array()
+        
         getParking( { (parkings:[AnyObject]) -> Void in
             for parking in parkings {
                 var mainData = MainData()
@@ -36,13 +37,13 @@ class parkingData: NSObject {
                 mainData.addressP = parking.objectForKey("parking_address") as! String
                 mainData.toll_car = parking.objectForKey("toll_car") as! String
                 
-                list.append(mainData)
+                self.list.append(mainData)
             }
         })
     }
     
     //請外部傳一個closure，讓你的程式在完成的時候可以告知他
-    func getParking(completion : (parkings:[AnyObject]) -> Void){
+    func getParking(completion: (parkings:[AnyObject]) -> Void){
     
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
@@ -53,7 +54,11 @@ class parkingData: NSObject {
             }else{
                 /*<註4>*/
             }
-            completion(parkings: self.parking)
+            
+            dispatch_async(dispatch_get_main_queue()){
+                completion(parkings: self.parking)
+                
+            }
         }
     }
     
@@ -80,20 +85,10 @@ class parkingData: NSObject {
                 
             }
         }
-
-        /*
-        let data = NSData(contentsOfURL: parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-        let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
-        
-        if let nonull_json = json as? [AnyObject] {
-            self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
-        }else{
-        }*/
-
         return parking
     }
     
-    func getParkList()->NSArray{
+    func getParkList(completion : (parkings:[AnyObject]) -> Void){
         var list : [MainData] = Array()
         
         for result in parking{
@@ -107,7 +102,7 @@ class parkingData: NSObject {
             list.append(mainData)
         }
         
-        return list
+        completion(parkings: self.list)
     }
     
 }

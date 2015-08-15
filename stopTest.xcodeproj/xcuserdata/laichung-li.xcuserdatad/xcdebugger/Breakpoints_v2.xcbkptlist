@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "stopTest/ViewController.swift"
-            timestampString = "461108238.489017"
+            filePath = "stopTest/parkingData.swift"
+            timestampString = "461135274.717669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "postToServerFunction()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getParking(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,8 +25,56 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "stopTest/parkingData.swift"
+            timestampString = "461135276.542665"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "getParking(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stopTest.parkingData.(getParking (stopTest.parkingData) -&gt; ((parkings : Swift.Array&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "stopTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/parkingData.swift"
+                  timestampString = "461170911.7089"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "729">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stopTest.parkingData.(getParking (stopTest.parkingData) -&gt; ((parkings : Swift.Array&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "stopTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/parkingData.swift"
+                  timestampString = "461170911.709211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "stopTest/ViewController.swift"
-            timestampString = "461108239.473292"
+            timestampString = "461151715.028277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -41,78 +89,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "stopTest/parkingData.swift"
-            timestampString = "461112361.379882"
+            filePath = "stopTest/ViewController.swift"
+            timestampString = "461151716.32883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "getParkList()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "stopTest/parkingData.swift"
-            timestampString = "461112350.832926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getParking(_:)"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "postToServerFunction()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "stopTest.parkingData.getParking (stopTest.parkingData)((parkings : Swift.Array&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "stopTest.ViewController.postToServerFunction (stopTest.ViewController)() -&gt; Swift.String"
                   moduleName = "stopTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/parkingData.swift"
-                  timestampString = "461112361.784838"
+                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/ViewController.swift"
+                  timestampString = "461170911.710577"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "23">
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "4786">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "stopTest.parkingData.(getParking (stopTest.parkingData) -&gt; ((parkings : Swift.Array&lt;Swift.AnyObject&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  symbolName = "stopTest.ViewController.(postToServerFunction (stopTest.ViewController) -&gt; () -&gt; Swift.String).(closure #1)"
                   moduleName = "stopTest"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/parkingData.swift"
-                  timestampString = "461112361.785052"
+                  urlString = "file:///Users/laichung-li/GitProject/stopTest/stopTest/ViewController.swift"
+                  timestampString = "461170911.710728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "stopTest/parkingData.swift"
-            timestampString = "461112352.864659"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "getParking(_:)"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
