@@ -19,8 +19,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var locationStatus : NSString = "Not Started"
     var point:MKPointAnnotation!
     var c:CLLocation!
-    
+    let refreshControl = UIRefreshControl()
     var parkingList = NSArray() as! [MainData]
+   
     //也行 var parkingList = [MainData] ()
     
     override func viewDidLoad() {
@@ -35,15 +36,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         //開啟計算目前行動裝置所在位置的功能
         location.startUpdatingLocation()
         
-        if (postToServerFunction() == "01"){
-            println("連線成功")
+        postToServerFunction { (parkings) -> Void in
+            for parking in parkings {
+                var mainData = MainData()
+                mainData.title = parking.objectForKey("parking_name") as! String
+                mainData.addressP = parking.objectForKey("parking_address") as! String
+                mainData.toll_car = parking.objectForKey("toll_car") as! String
+                
+                self.parkingList.append(mainData)
+            }
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         point = MKPointAnnotation()
-        //point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude) 120.66629
+        //point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
         point.coordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
         point.title = "台中市"
         point.subtitle = "所在位置"
@@ -114,7 +121,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     }
     
     
-    func postToServerFunction() -> String{
+    func postToServerFunction(completion: (parkings:[AnyObject]) -> Void){
         let USERNAME_S = "101"
         let PASSWD_S = "台中"
         
@@ -146,6 +153,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
             if (res.statusCode >= 200 && res.statusCode < 300){
                 var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
+                
                 /*
                 var queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
                 dispatch_async(queue, { () -> Void in
@@ -156,19 +164,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
-                })*/
-                
+                })
+                */
+                dispatch_async(dispatch_get_main_queue(), {
                 var parkData = parkingData()
                 parkData.getParking({ (parkings) -> Void in
                     parkingList
                 })
                 
+                completion(parkings: self.parkingList)
+                })
                 //parkingList = parkData.getParkList() as! [MainData]
             }
-            return "01"
-        }else{
-            println("Cannot connect!")
-            return "02"
         }
     }
     
