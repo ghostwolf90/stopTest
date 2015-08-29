@@ -24,7 +24,6 @@ import UIKit
 class parkingData: NSObject {
     private var parking = [AnyObject]() /*<註1>代表宣告一個存放任意型別物件的Array*/
     private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-    //private let parkingURL: NSURL = NSURL(string: "http://laibit.lionfree.net/parking.txt")!
     var list : [MainData] = Array()
     
     override init() {

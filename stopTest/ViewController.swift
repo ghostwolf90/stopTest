@@ -14,22 +14,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
 
     var location: CLLocationManager!
     @IBOutlet weak var myMap: MKMapView!
+    @IBOutlet weak var tableView:UITableView!
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
     var locationStatus : NSString = "Not Started"
     var point:MKPointAnnotation!
     var c:CLLocation!
     let refreshControl = UIRefreshControl()
-    var parkingList = NSArray() as! [MainData]
+    var parkingList = [MainData](){
+        didSet{
+            //do something
+            //update ui
+            self.tableView.reloadData()
+        }
+    }
    
-    //也行 var parkingList = [MainData] ()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         seenError = false
         locationFixAchieved = false
-               location = CLLocationManager()
+        
+        location = CLLocationManager()
         location.delegate = self
         //詢問是否要給APP有定位功能權限
         location.requestWhenInUseAuthorization()
@@ -44,6 +50,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 mainData.toll_car = parking.objectForKey("toll_car") as! String
                 
                 self.parkingList.append(mainData)
+//                //update ui
+//                self.tableView.reloadData()
             }
         }
     }
@@ -146,6 +154,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         var response: NSURLResponse? = nil
         var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
         
+//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+//            
+//        }
+        
         if ( urlData != nil ) {
             let res = response as! NSHTTPURLResponse!
             NSLog("Response code: %ld", res.statusCode);
@@ -154,27 +166,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
                 
-                /*
-                var queue: dispatch_queue_t = dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
-                dispatch_async(queue, { () -> Void in
-                    var parkData = parkingData()
-                    self.parkingList = parkData.getParkList() as! [MainData]
-                })
-                
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
-                })
-                */
                 dispatch_async(dispatch_get_main_queue(), {
-                var parkData = parkingData()
-                parkData.getParking({ (parkings) -> Void in
-                    parkingList
-                })
+                    var parkData = parkingData()
+                    parkData.getParking({ (parkings) -> Void in
+                        
+                        completion(parkings: parkings)
+                    })
                 
-                completion(parkings: self.parkingList)
+                    
                 })
-                //parkingList = parkData.getParkList() as! [MainData]
             }
         }
     }
