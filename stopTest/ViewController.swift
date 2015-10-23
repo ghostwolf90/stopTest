@@ -44,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         
         postToServerFunction { (parkings) -> Void in
             for parking in parkings {
-                var mainData = MainData()
+                let mainData = MainData()
                 mainData.title = parking.objectForKey("parking_name") as! String
                 mainData.addressP = parking.objectForKey("parking_address") as! String
                 mainData.toll_car = parking.objectForKey("toll_car") as! String
@@ -65,9 +65,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         self.myMap.addAnnotation(point)
     
         //放大效果
-        var track = CLLocationCoordinate2D(latitude: 24.136299, longitude: 120.66629)
-        var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        var region = MKCoordinateRegion(center: track, span: span)
+        let track = CLLocationCoordinate2D(latitude: 24.136299, longitude: 120.66629)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        _ = MKCoordinateRegion(center: track, span: span)
         
         //self.myMap.centerCoordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
         self.myMap.centerCoordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
@@ -80,24 +80,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     // Location Manager Delegate stuff
     // If failed
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         location.stopUpdatingLocation()
+        
         if ((error) != nil) {
             if (seenError == false) {
                 seenError = true
-                print(error)
+                print(error, terminator: "")
             }
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locationArray = locations as NSArray
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locationArray = locations as NSArray
         c = locationArray[0] as! CLLocation
         NSLog("緯度:%f, 精度:%f, 高度:%f", c.coordinate.latitude, c.coordinate.longitude, c.altitude)
     }
     
     //authorization status
-    func locationManager(manager: CLLocationManager!,
+    func locationManager(manager: CLLocationManager,
         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
             var shouldIAllow = false
             
@@ -134,14 +135,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         let PASSWD_S = "台中"
         
         //var post:NSString = "username=\(username)&password=\(passwd)"
-        var post:NSString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
+        let post:NSString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
         NSLog("PostData: %@", post);
         
         
-        var url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-        var postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
-        var postLength:NSString = String( postData.length )
-        var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        let url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
+        let postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
+        let postLength:NSString = String( postData.length )
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
         
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
@@ -150,9 +151,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         var reponseError: NSError?
-        var bodyBata = "data=something"
+        _ = "data=something"
         var response: NSURLResponse? = nil
-        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        var urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
+        } catch let error as NSError {
+            reponseError = error
+            urlData = nil
+        }
         
 //        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
 //            
@@ -163,11 +170,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
             NSLog("Response code: %ld", res.statusCode);
             
             if (res.statusCode >= 200 && res.statusCode < 300){
-                var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    var parkData = parkingData()
+                    let parkData = parkingData()
                     parkData.getParking({ (parkings) -> Void in
                         
                         completion(parkings: parkings)

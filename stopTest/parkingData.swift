@@ -31,7 +31,7 @@ class parkingData: NSObject {
         
         getParking( { (parkings:[AnyObject]) -> Void in
             for parking in parkings {
-                var mainData = MainData()
+                let mainData = MainData()
                 mainData.title = parking.objectForKey("parking_name") as! String
                 mainData.addressP = parking.objectForKey("parking_address") as! String
                 mainData.toll_car = parking.objectForKey("toll_car") as! String
@@ -46,8 +46,8 @@ class parkingData: NSObject {
     
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
-            let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-            let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)
+            let data = try? NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached)
+            let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
             if let nonull_json = json as? [AnyObject] {
                 self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
             }else{
@@ -66,10 +66,10 @@ class parkingData: NSObject {
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
         //把你data的那一行寫到這裡
-        let data = NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached, error: nil)
+        let data = try? NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached)
         dispatch_async(dispatch_get_main_queue()) {
             //reload ui here! 或是做你拿到資料後想做的處理
-            let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: nil)/*<註2>as? [String: String]*/
+            let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)/*<註2>as? [String: String]*/
                 
             /*<註3>: 可以寫成Swift的 if let語法就可以了*/
             /*if (json != nil){
@@ -91,7 +91,7 @@ class parkingData: NSObject {
         var list : [MainData] = Array()
         
         for result in parking{
-            var mainData = MainData()
+            let mainData = MainData()
             mainData.title = result.objectForKey("parking_name") as! String
             mainData.addressP = result.objectForKey("parking_address") as! String
             mainData.toll_car = result.objectForKey("toll_car") as! String
