@@ -15,6 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     var location: CLLocationManager!
     @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var tableView:UITableView!
+    
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
     var locationStatus : NSString = "Not Started"
