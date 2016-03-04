@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tHK-br-W9a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tHK-br-W9a">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -21,108 +21,104 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6s9-5A-FAj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="329"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-7c-gYb">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DXV-YJ-DR8">
                                 <rect key="frame" x="0.0" y="328" width="600" height="272"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="AuZ-ss-ybj" customClass="CustomTableViewCell" customModule="stopTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuZ-ss-ybj" id="6SL-Je-Lep">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="parking_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP8-mi-Vl5">
-                                                    <rect key="frame" x="22" y="8" width="125" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="bnL-PP-VvO"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="parking_address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVa-Sp-mmV">
-                                                    <rect key="frame" x="22" y="45" width="550" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="rsB-fO-pxF"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toll" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-dJ-ORA">
-                                                    <rect key="frame" x="572" y="8" width="20" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="1Zv-Ox-Nl6"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="312-IW-gTF"/>
-                                                <constraint firstItem="GP8-mi-Vl5" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="GKC-fI-sDT"/>
-                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="top" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="8" symbolic="YES" id="IM8-h0-14h"/>
-                                                <constraint firstAttribute="bottom" secondItem="fdp-dJ-ORA" secondAttribute="bottom" constant="50" id="VUA-IS-BCj"/>
-                                                <constraint firstAttribute="trailing" secondItem="fdp-dJ-ORA" secondAttribute="trailing" constant="8" id="Zgh-Of-evq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HVa-Sp-mmV" secondAttribute="trailing" constant="20" id="yG3-BP-hJX"/>
-                                                <constraint firstAttribute="bottom" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="42" id="zJL-hS-7iI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="parkingAddress" destination="HVa-Sp-mmV" id="Ucy-bS-8E9"/>
-                                            <outlet property="parkingNameLable" destination="GP8-mi-Vl5" id="Io5-j8-clr"/>
-                                            <outlet property="tollLable" destination="fdp-dJ-ORA" id="flr-qj-eFr"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ocV-I6-RKC"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZcK-pb-YVq"/>
-                                </connections>
-                            </tableView>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tx4-sX-XIw">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="272"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-7c-gYb">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="272"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="AuZ-ss-ybj" customClass="CustomTableViewCell" customModule="stopTest" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="22" width="600" height="80"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuZ-ss-ybj" id="6SL-Je-Lep">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="parking_name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP8-mi-Vl5">
+                                                                    <rect key="frame" x="22" y="8" width="125" height="29"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="125" id="HKd-8V-sc2"/>
+                                                                        <constraint firstAttribute="height" constant="29" id="bnL-PP-VvO"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="parking_address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVa-Sp-mmV">
+                                                                    <rect key="frame" x="22" y="45" width="550" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="21" id="rsB-fO-pxF"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toll" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-dJ-ORA">
+                                                                    <rect key="frame" x="572" y="8" width="20" height="21"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="21" id="1Zv-Ox-Nl6"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="312-IW-gTF"/>
+                                                                <constraint firstItem="GP8-mi-Vl5" firstAttribute="leading" secondItem="6SL-Je-Lep" secondAttribute="leading" constant="22" id="GKC-fI-sDT"/>
+                                                                <constraint firstItem="HVa-Sp-mmV" firstAttribute="top" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="8" symbolic="YES" id="IM8-h0-14h"/>
+                                                                <constraint firstAttribute="bottom" secondItem="fdp-dJ-ORA" secondAttribute="bottom" constant="50" id="VUA-IS-BCj"/>
+                                                                <constraint firstAttribute="trailing" secondItem="fdp-dJ-ORA" secondAttribute="trailing" constant="8" id="Zgh-Of-evq"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="HVa-Sp-mmV" secondAttribute="trailing" constant="20" id="yG3-BP-hJX"/>
+                                                                <constraint firstAttribute="bottom" secondItem="GP8-mi-Vl5" secondAttribute="bottom" constant="42" id="zJL-hS-7iI"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="parkingAddress" destination="HVa-Sp-mmV" id="Ucy-bS-8E9"/>
+                                                            <outlet property="parkingNameLable" destination="GP8-mi-Vl5" id="Io5-j8-clr"/>
+                                                            <outlet property="tollLable" destination="fdp-dJ-ORA" id="flr-qj-eFr"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ocV-I6-RKC"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZcK-pb-YVq"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="2hh-pf-Hcc"/>
+                            <constraint firstItem="DXV-YJ-DR8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="264" id="2uR-At-hQ7"/>
+                            <constraint firstAttribute="trailing" secondItem="6s9-5A-FAj" secondAttribute="trailing" id="3y6-Xe-yAU"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6s9-5A-FAj" secondAttribute="bottom" constant="271" id="47q-As-V1Y"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="trailing" secondItem="6s9-5A-FAj" secondAttribute="trailing" id="5A6-PM-Eqc"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="6sq-09-TDc"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="6s9-5A-FAj" secondAttribute="leading" id="7Pp-8d-iM4"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="81D-Uc-hgS"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="264" id="8Kx-dT-PCC"/>
+                            <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Kd-As-8sH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6s9-5A-FAj" secondAttribute="trailing" constant="-16" id="8Rk-OR-cfD"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="top" secondItem="6s9-5A-FAj" secondAttribute="bottom" constant="3" id="Ax1-2E-Cu6"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="top" secondItem="6s9-5A-FAj" secondAttribute="bottom" constant="8" id="BOL-wS-sJh"/>
+                            <constraint firstItem="6s9-5A-FAj" firstAttribute="trailing" secondItem="DXV-YJ-DR8" secondAttribute="trailing" id="8c2-2m-fxw"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="CAQ-Qe-1xM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6s9-5A-FAj" secondAttribute="trailing" constant="-16" id="GbF-Nv-Rnd"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="HVZ-yV-w8X"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v7k-7c-gYb" secondAttribute="trailing" constant="-16" id="JIx-Jj-pyh"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="O68-1g-tMj"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="OyX-Nm-Dpn"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="SEk-g1-QhY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7k-7c-gYb" secondAttribute="bottom" constant="41" id="T7h-Tu-l2N"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7k-7c-gYb" secondAttribute="bottom" id="TjJ-mb-P6l"/>
+                            <constraint firstItem="DXV-YJ-DR8" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="WKR-tC-CJg"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="bQt-29-f87"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c6r-pH-mr3"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7k-7c-gYb" secondAttribute="bottom" id="dEX-FN-8Tt"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dHb-7w-qeZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v7k-7c-gYb" secondAttribute="trailing" constant="-16" id="e9G-0D-f9s"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="l5R-U8-GPS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v7k-7c-gYb" secondAttribute="bottom" id="lBM-N4-iOC"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="laA-Q3-du1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v7k-7c-gYb" secondAttribute="trailing" constant="-16" id="lcV-EW-CDP"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="top" secondItem="6s9-5A-FAj" secondAttribute="bottom" constant="3" id="mDm-y7-oAl"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="mlC-Dh-Ho4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6s9-5A-FAj" secondAttribute="trailing" constant="-16" id="o58-jg-nGN"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="rGu-tr-kwb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6s9-5A-FAj" secondAttribute="trailing" constant="-16" id="st8-Tf-kRg"/>
-                            <constraint firstItem="v7k-7c-gYb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="vbK-3T-Fsx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v7k-7c-gYb" secondAttribute="trailing" constant="-16" id="xCC-yI-WEQ"/>
-                            <constraint firstAttribute="trailing" secondItem="v7k-7c-gYb" secondAttribute="trailing" id="xmQ-Dc-oxs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6s9-5A-FAj" secondAttribute="trailing" constant="-16" id="xuw-zs-60W"/>
                             <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="yzp-z6-nwq"/>
+                            <constraint firstItem="6s9-5A-FAj" firstAttribute="leading" secondItem="DXV-YJ-DR8" secondAttribute="leading" id="z7q-xa-eN0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -141,21 +137,6 @@
                                 <exclude reference="st8-Tf-kRg"/>
                                 <exclude reference="xuw-zs-60W"/>
                                 <exclude reference="yzp-z6-nwq"/>
-                                <exclude reference="6sq-09-TDc"/>
-                                <exclude reference="Ax1-2E-Cu6"/>
-                                <exclude reference="BOL-wS-sJh"/>
-                                <exclude reference="JIx-Jj-pyh"/>
-                                <exclude reference="e9G-0D-f9s"/>
-                                <exclude reference="l5R-U8-GPS"/>
-                                <exclude reference="laA-Q3-du1"/>
-                                <exclude reference="lcV-EW-CDP"/>
-                                <exclude reference="mDm-y7-oAl"/>
-                                <exclude reference="vbK-3T-Fsx"/>
-                                <exclude reference="xCC-yI-WEQ"/>
-                                <exclude reference="T7h-Tu-l2N"/>
-                                <exclude reference="TjJ-mb-P6l"/>
-                                <exclude reference="dEX-FN-8Tt"/>
-                                <exclude reference="lBM-N4-iOC"/>
                             </mask>
                         </variation>
                     </view>

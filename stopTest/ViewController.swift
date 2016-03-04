@@ -83,13 +83,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     // If failed
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         location.stopUpdatingLocation()
-        
+    
+        /*
         if ((error) != nil) {
             if (seenError == false) {
                 seenError = true
                 print(error, terminator: "")
             }
-        }
+        }*/
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -155,10 +156,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         _ = "data=something"
         var response: NSURLResponse? = nil
         var urlData: NSData?
+        
         do {
             urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
         } catch let error as NSError {
             reponseError = error
+            print( error)
             urlData = nil
         }
         
