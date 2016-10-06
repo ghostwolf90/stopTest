@@ -3,7 +3,7 @@
 爬文的過程發現，swift處理資料庫這段，中文資料太少了，希望貢獻一己之力。
 
 ## 使用技術部份(未編輯)
-* [以Post方式傳送資料給網站（Post to Server）](#post-to-server)
+* [以Post方式傳送資料給網站（Post to Server）](#以post方式傳送資料給網站post-to-server)
 * [OC和swift差別 (OC & Swift)] (#oc和swift差別-oc--swift)
 * [閉包 (closure)] (#閉包-closure)
 
