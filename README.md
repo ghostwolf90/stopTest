@@ -5,7 +5,7 @@
 ## 使用技術部份(未編輯)
 * [以Post方式傳送資料給網站（Post to Server）](#post-to-server)
 * [OC和swift差別 (OC & Swift)] (#oc-and-swift)
-* [閉包 (closure)] (#closure)
+* [閉包 (closure)] (#閉包 closure)
 
 ### 以Post方式傳送資料給網站（Post to Server）
 
