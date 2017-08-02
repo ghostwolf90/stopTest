@@ -1,4 +1,4 @@
-# stopTest紀錄手冊
+# StopTest紀錄手冊
 這份手冊主要紀錄Swift撰寫 app -> Server PHP -> DB 技術過程及重點。
 爬文的過程發現，swift處理資料庫這段，中文資料太少了，希望貢獻一己之力。
 
