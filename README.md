@@ -1,6 +1,5 @@
 # StopTest紀錄手冊
 這份手冊主要紀錄Swift撰寫 app -> Server PHP -> DB 技術過程及重點。
-爬文的過程發現，swift處理資料庫這段，中文資料太少了，希望貢獻一己之力。
 
 ## 使用技術部份(未編輯)
 * [以Post方式傳送資料給網站（Post to Server）](#以post方式傳送資料給網站post-to-server)
