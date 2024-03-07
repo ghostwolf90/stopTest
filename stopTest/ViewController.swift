@@ -46,10 +46,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         postToServerFunction { (parkings) -> Void in
             for parking in parkings {
                 let mainData = MainData()
-                mainData.title = parking.objectForKey("parking_name") as! String
-                mainData.addressP = parking.objectForKey("parking_address") as! String
-                mainData.toll_car = parking.objectForKey("toll_car") as! String
-                
+//                mainData.title = parking.object("parking_name") as! String
+//                mainData.addressP = parking.object("parking_address") as! String
+//                mainData.toll_car = parking.object("toll_car") as! String
                 self.parkingList.append(mainData)
 //                //update ui
 //                self.tableView.reloadData()
@@ -57,7 +56,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         point = MKPointAnnotation()
         //point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
         point.coordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
@@ -81,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     
     // Location Manager Delegate stuff
     // If failed
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         location.stopUpdatingLocation()
     
         /*
@@ -100,113 +99,90 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
     }
     
     //authorization status
-    func locationManager(manager: CLLocationManager,
-        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-            var shouldIAllow = false
-            
-            switch status {
-            case CLAuthorizationStatus.Restricted:
-                locationStatus = "Restricted Access to location"
-            case CLAuthorizationStatus.Denied:
-                locationStatus = "User denied access to location"
-            case CLAuthorizationStatus.NotDetermined:
-                locationStatus = "Status not determined"
-            default:
-                locationStatus = "Allowed to location Access"
-                shouldIAllow = true
-            }
-            NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
-            if (shouldIAllow == true) {
-                NSLog("Location to Allowed")
-                // Start location services
-                location.startUpdatingLocation()
-            } else {
-                NSLog("Denied access: \(location)")
-            }
+    private func locationManager(manager: CLLocationManager,
+                         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        var shouldIAllow = false
+        
+        switch status {
+        case CLAuthorizationStatus.restricted:
+            locationStatus = "Restricted Access to location"
+        case CLAuthorizationStatus.denied:
+            locationStatus = "User denied access to location"
+        case CLAuthorizationStatus.notDetermined:
+            locationStatus = "Status not determined"
+        default:
+            locationStatus = "Allowed to location Access"
+            shouldIAllow = true
+        }
+        NotificationCenter.default.post(name: Notification.Name("LabelHasbeenUpdated"), object: nil)
+        
+        if (shouldIAllow == true) {
+            NSLog("Location to Allowed")
+            // Start location services
+            location.startUpdatingLocation()
+        } else {
+            NSLog("Denied access: \(location)")
+        }
     }
-
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         //關閉計算目前行動裝置所在位置功能
         location.stopUpdatingLocation()
     }
     
-    
-    func postToServerFunction(completion: (parkings:[AnyObject]) -> Void){
+    func postToServerFunction(completion: @escaping ([String]) -> Void) {
         let USERNAME_S = "101"
         let PASSWD_S = "台中"
         
-        //var post:NSString = "username=\(username)&password=\(passwd)"
-        let post:NSString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
-        NSLog("PostData: %@", post);
+        let postString = "CITY_NO=\(USERNAME_S)&CITY_NAME=\(PASSWD_S)"
+        print("PostData: \(postString)")
         
+        guard let url = URL(string: "http://localhost:8888/parking.php") else {
+            print("Invalid URL")
+            return
+        }
         
-        let url: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-        let postData:NSData = post.dataUsingEncoding(NSUTF8StringEncoding)!
-        let postLength:NSString = String( postData.length )
-        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
-        
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = postString.data(using: .utf8)
+        request.setValue(String(describing: postString.count), forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        var reponseError: NSError?
-        _ = "data=something"
-        var response: NSURLResponse? = nil
-        var urlData: NSData?
-        
-        do {
-            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse:&response)
-        } catch let error as NSError {
-            reponseError = error
-            print( error)
-            urlData = nil
-        }
-        
-//        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-//            
-//        }
-        
-        if ( urlData != nil ) {
-            let res = response as! NSHTTPURLResponse!
-            NSLog("Response code: %ld", res.statusCode);
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "No error description")")
+                return
+            }
             
-            if (res.statusCode >= 200 && res.statusCode < 300){
-                let responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-                NSLog("Response ==> %@", responseData);
+            if let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode {
+                print("Response ==> \(String(describing: String(data: data, encoding: .utf8)))")
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async {
                     let parkData = parkingData()
-                    parkData.getParking({ (parkings) -> Void in
-                        
-                        completion(parkings: parkings)
+                    parkData.getParking(completion: { parkings in
+                        completion(parkings)
                     })
-                
-                    
-                })
+                }
+            } else {
+                print("Server responded with an error")
             }
         }
+        
+        task.resume()
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parkingList.count
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? CustomTableViewCell
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as? CustomTableViewCell
         cell!.parkingNameLable.text = parkingList[indexPath.row].title
         cell!.parkingAddress.text = parkingList[indexPath.row].addressP
         cell!.tollLable.text = parkingList[indexPath.row].toll_car
-        
         return cell!
     }
-    
-
 
 }
 

@@ -21,87 +21,88 @@
 
 import UIKit
 
-class parkingData: NSObject {
-    private var parking = [AnyObject]() /*<註1>代表宣告一個存放任意型別物件的Array*/
-    private let parkingURL: NSURL = NSURL(string: "http://localhost:8888/parking.php")!
-    var list : [MainData] = Array()
-    
-    override init() {
-        super.init()
-        
-        getParking( { (parkings:[AnyObject]) -> Void in
+class parkingData {
+    private var parking = [String]() /*<註1>代表宣告一個存放任意型別物件的Array*/
+    private let parkingURL: URL = URL(string: "http://localhost:8888/parking.php")!
+    var list: [MainData] = Array()
+
+    init() {
+        getParking( completion: { (parkings: [String]) -> Void in
             for parking in parkings {
                 let mainData = MainData()
-                mainData.title = parking.objectForKey("parking_name") as! String
-                mainData.addressP = parking.objectForKey("parking_address") as! String
-                mainData.toll_car = parking.objectForKey("toll_car") as! String
-                
+//                mainData.title = parking["parking_name"] as! String
+//                mainData.addressP = parking.object("parking_address") as! String
+//                mainData.toll_car = parking.object("toll_car") as! String
                 self.list.append(mainData)
             }
         })
     }
     
     //請外部傳一個closure，讓你的程式在完成的時候可以告知他
-    func getParking(completion: (parkings:[AnyObject]) -> Void){
-    
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
-            let data = try? NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached)
-            let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
-            if let nonull_json = json as? [AnyObject] {
-                self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
-            }else{
-                /*<註4>*/
-            }
-            
-            dispatch_async(dispatch_get_main_queue()){
-                completion(parkings: self.parking)
-                
+    func getParking(completion: @escaping ([String]) -> Void) {
+        DispatchQueue.global(qos: .default).async {
+            do {
+                let data = try Data(contentsOf: self.parkingURL as URL)
+                if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let parkings = jsonObject["someKey"] as? [String] {
+                    DispatchQueue.main.async {
+                        completion(parkings)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion([])
+                    }
+                }
+            } catch {
+                print(error)
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
     }
+
     
     //for model
-    func getMovieDataFromArrar() -> [AnyObject] {
-        
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
-        //把你data的那一行寫到這裡
-        let data = try? NSData(contentsOfURL: self.parkingURL, options: NSDataReadingOptions.DataReadingUncached)
-        dispatch_async(dispatch_get_main_queue()) {
-            //reload ui here! 或是做你拿到資料後想做的處理
-            let json: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)/*<註2>as? [String: String]*/
-                
-            /*<註3>: 可以寫成Swift的 if let語法就可以了*/
-            /*if (json != nil){
-            self.parking = /*NSArray(array: json as! NSArray)*/
-            }*/
-                
-            if let nonull_json = json as? [AnyObject] {
-                self.parking = nonull_json /*NSArray(array: json as! NSArray)*/
-            }else{
-                /*<註4>*/
-            }
-                
+    func getMovieDataFromArray(completion: @escaping ([String]) -> Void) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            // 尝试获取数据
+            do {
+                let data = try Data(contentsOf: self.parkingURL)
+                if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    DispatchQueue.main.async {
+                        // 假设您要从JSON中解析出字符串数组
+                        let parsedData = jsonObject["yourKey"] as? [String] ?? []
+                        completion(parsedData)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion([])
+                    }
+                }
+            } catch {
+                print("Error: \(error)")
+                DispatchQueue.main.async {
+                    completion([])
+                }
             }
         }
-        return parking
     }
+
     
-    func getParkList(completion : (parkings:[AnyObject]) -> Void){
-        var list : [MainData] = Array()
+    func getParkList(completion : (_ parkings: [MainData]) -> Void) {
+        var list = [MainData]()
         
-        for result in parking{
+        for result in parking {
             let mainData = MainData()
-            mainData.title = result.objectForKey("parking_name") as! String
-            mainData.addressP = result.objectForKey("parking_address") as! String
-            mainData.toll_car = result.objectForKey("toll_car") as! String
+//            mainData.title = result.object("parking_name") as! String
+//            mainData.addressP = result.object("parking_address") as! String
+//            mainData.toll_car = result.object("toll_car") as! String
             //mainData.lattitude = result.objectForKey("lattiude") as! Double
             //mainData.longitude = result.objectForKey("longitude") as! Double
-            
             list.append(mainData)
         }
-        
-        completion(parkings: self.list)
+        completion(self.list)
     }
     
 }

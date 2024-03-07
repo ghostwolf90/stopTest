@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MainData: NSObject {
-    var title: String
-    var addressP: String
-    var toll_car : String
-    var time : String
-    var lattitude : Double
-    var longitude : Double
+struct MainData {
+    var title = ""
+    var addressP = ""
+    var toll_car = ""
+    var time = ""
+    var lattitude: Double = 0.0
+    var longitude: Double = 0.0
     
-    override init(){
+    init() {
         addressP                = ""
         title                   = ""
         toll_car                = ""

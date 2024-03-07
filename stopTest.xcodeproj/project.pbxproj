@@ -100,8 +100,8 @@
 				5FDCCA431B606FEA00135D45 /* ViewController.swift */,
 				5FD796D81B6AD63E00804697 /* CustomTableViewCell.swift */,
 				5FD796D31B66E6E700804697 /* model */,
-				5FDCCA451B606FEA00135D45 /* Main.storyboard */,
 				5FDCCA481B606FEA00135D45 /* Images.xcassets */,
+				5FDCCA451B606FEA00135D45 /* Main.storyboard */,
 				5FDCCA4A1B606FEA00135D45 /* LaunchScreen.xib */,
 				5FDCCA3F1B606FEA00135D45 /* Supporting Files */,
 			);
@@ -201,6 +201,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -379,6 +380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -391,6 +393,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
