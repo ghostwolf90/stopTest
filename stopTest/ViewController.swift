@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
     var location: CLLocationManager!
     @IBOutlet weak var myMap: MKMapView!
@@ -168,21 +168,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDa
                 print("Server responded with an error")
             }
         }
-        
         task.resume()
     }
+}
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parkingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as? CustomTableViewCell
-        cell!.parkingNameLable.text = parkingList[indexPath.row].title
-        cell!.parkingAddress.text = parkingList[indexPath.row].addressP
-        cell!.tollLable.text = parkingList[indexPath.row].toll_car
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! CustomTableViewCell
+        cell.parkingNameLable.text = parkingList[indexPath.row].title
+        cell.parkingAddress.text = parkingList[indexPath.row].addressP
+        cell.tollLable.text = parkingList[indexPath.row].toll_car
+        return cell
     }
-
+    
 }
-
