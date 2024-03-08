@@ -44,7 +44,7 @@ class parkingData {
             do {
                 let data = try Data(contentsOf: self.parkingURL as URL)
                 if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let parkings = jsonObject["someKey"] as? [String] {
+                    let parkings = jsonObject["someKey"] as? [String] {
                     DispatchQueue.main.async {
                         completion(parkings)
                     }
@@ -61,34 +61,6 @@ class parkingData {
             }
         }
     }
-
-    
-    //for model
-    func getMovieDataFromArray(completion: @escaping ([String]) -> Void) {
-        DispatchQueue.global(qos: .userInteractive).async {
-            // 尝试获取数据
-            do {
-                let data = try Data(contentsOf: self.parkingURL)
-                if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    DispatchQueue.main.async {
-                        // 假设您要从JSON中解析出字符串数组
-                        let parsedData = jsonObject["yourKey"] as? [String] ?? []
-                        completion(parsedData)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion([])
-                    }
-                }
-            } catch {
-                print("Error: \(error)")
-                DispatchQueue.main.async {
-                    completion([])
-                }
-            }
-        }
-    }
-
     
     func getParkList(completion : (_ parkings: [MainData]) -> Void) {
         var list = [MainData]()
