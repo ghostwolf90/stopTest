@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FD796D51B66E8A500804697 /* MainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD796D41B66E8A500804697 /* MainData.swift */; };
-		5FD796D71B673AC400804697 /* parkingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD796D61B673AC400804697 /* parkingData.swift */; };
+		5FD796D71B673AC400804697 /* ParkingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD796D61B673AC400804697 /* ParkingData.swift */; };
 		5FD796D91B6AD63E00804697 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD796D81B6AD63E00804697 /* PlaceTableViewCell.swift */; };
 		5FDCCA421B606FEA00135D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCCA411B606FEA00135D45 /* AppDelegate.swift */; };
 		5FDCCA441B606FEA00135D45 /* MyMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCCA431B606FEA00135D45 /* MyMapViewController.swift */; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		5FD796D41B66E8A500804697 /* MainData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainData.swift; sourceTree = "<group>"; };
-		5FD796D61B673AC400804697 /* parkingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = parkingData.swift; sourceTree = "<group>"; };
+		5FD796D61B673AC400804697 /* ParkingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingData.swift; sourceTree = "<group>"; };
 		5FD796D81B6AD63E00804697 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		5FDCCA3C1B606FEA00135D45 /* stopTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stopTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDCCA401B606FEA00135D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		5FD796D31B66E6E700804697 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				5FD796D61B673AC400804697 /* parkingData.swift */,
+				5FD796D61B673AC400804697 /* ParkingData.swift */,
 				5FD796D41B66E8A500804697 /* MainData.swift */,
 			);
 			name = model;
@@ -244,7 +244,7 @@
 				5FD796D51B66E8A500804697 /* MainData.swift in Sources */,
 				5FD796D91B6AD63E00804697 /* PlaceTableViewCell.swift in Sources */,
 				5FDCCA441B606FEA00135D45 /* MyMapViewController.swift in Sources */,
-				5FD796D71B673AC400804697 /* parkingData.swift in Sources */,
+				5FD796D71B673AC400804697 /* ParkingData.swift in Sources */,
 				5FDCCA421B606FEA00135D45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

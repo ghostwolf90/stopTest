@@ -21,22 +21,12 @@
 
 import UIKit
 
-class parkingData {
+class ParkingData {
+    static let sharedInstance = ParkingData()
+    
     private var parking = [String]() /*<註1>代表宣告一個存放任意型別物件的Array*/
     private let parkingURL: URL = URL(string: "http://localhost:8888/parking.php")!
     var list: [MainData] = Array()
-
-    init() {
-        getParking( completion: { (parkings: [String]) -> Void in
-            for parking in parkings {
-                let mainData = MainData()
-//                mainData.title = parking["parking_name"] as! String
-//                mainData.addressP = parking.object("parking_address") as! String
-//                mainData.toll_car = parking.object("toll_car") as! String
-                self.list.append(mainData)
-            }
-        })
-    }
     
     //請外部傳一個closure，讓你的程式在完成的時候可以告知他
     func getParking(completion: @escaping ([String]) -> Void) {

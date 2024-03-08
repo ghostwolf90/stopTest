@@ -18,6 +18,12 @@ class PlaceTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setData(mapData: MainData) {
+        parkingNameLable.text = mapData.title
+        parkingAddress.text = mapData.addressP
+        tollLable.text = mapData.toll_car        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -144,9 +144,8 @@ class MyMapViewController: UIViewController, CLLocationManagerDelegate {
             if let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode {
                 print("Response ==> \(String(describing: String(data: data, encoding: .utf8)))")
                 
-                DispatchQueue.main.async {
-                    let parkData = parkingData()
-                    parkData.getParking(completion: { parkings in
+                DispatchQueue.main.async {                    
+                    ParkingData.sharedInstance.getParking(completion: { parkings in
                         completion(parkings)
                     })
                 }
@@ -165,9 +164,7 @@ extension MyMapViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PlaceTableViewCell
-        cell.parkingNameLable.text = parkingList[indexPath.row].title
-        cell.parkingAddress.text = parkingList[indexPath.row].addressP
-        cell.tollLable.text = parkingList[indexPath.row].toll_car
+        cell.setData(mapData: parkingList[indexPath.row])
         return cell
     }
     
