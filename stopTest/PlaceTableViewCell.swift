@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class PlaceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var parkingNameLable: UILabel!
     @IBOutlet weak var parkingAddress: UILabel!

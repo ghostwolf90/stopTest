@@ -164,7 +164,7 @@ extension MyMapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! PlaceTableViewCell
         cell.parkingNameLable.text = parkingList[indexPath.row].title
         cell.parkingAddress.text = parkingList[indexPath.row].addressP
         cell.tollLable.text = parkingList[indexPath.row].toll_car
