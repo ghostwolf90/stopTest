@@ -10,7 +10,7 @@
         <!--Parking-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="stopTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MyMapViewController" customModule="stopTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -143,7 +143,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Parking" id="G5B-cN-3gn"/>
                     <connections>
-                        <outlet property="myMap" destination="6s9-5A-FAj" id="LXg-BV-VqT"/>
+                        <outlet property="myMapView" destination="6s9-5A-FAj" id="LXg-BV-VqT"/>
                         <outlet property="tableView" destination="v7k-7c-gYb" id="226-en-o1B"/>
                     </connections>
                 </viewController>

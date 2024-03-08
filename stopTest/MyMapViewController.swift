@@ -10,11 +10,11 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class MyMapViewController: UIViewController, CLLocationManagerDelegate {
 
     var location: CLLocationManager!
-    @IBOutlet weak var myMap: MKMapView!
-    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var myMapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
     
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         point.coordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
         point.title = "台中市"
         point.subtitle = "所在位置"
-        self.myMap.addAnnotation(point)
+        self.myMapView.addAnnotation(point)
     
         //放大效果
         let track = CLLocationCoordinate2D(latitude: 24.136299, longitude: 120.66629)
@@ -70,26 +70,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         _ = MKCoordinateRegion(center: track, span: span)
         
         //self.myMap.centerCoordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
-        self.myMap.centerCoordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
+        self.myMapView.centerCoordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    // Location Manager Delegate stuff
-    // If failed
     private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         location.stopUpdatingLocation()
-    
-        /*
-        if ((error) != nil) {
-            if (seenError == false) {
-                seenError = true
-                print(error, terminator: "")
-            }
-        }*/
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -99,10 +88,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //authorization status
-    private func locationManager(manager: CLLocationManager,
-                         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         var shouldIAllow = false
-        
         switch status {
         case CLAuthorizationStatus.restricted:
             locationStatus = "Restricted Access to location"
@@ -115,7 +102,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             shouldIAllow = true
         }
         NotificationCenter.default.post(name: Notification.Name("LabelHasbeenUpdated"), object: nil)
-        
         if (shouldIAllow == true) {
             NSLog("Location to Allowed")
             // Start location services
@@ -171,7 +157,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         task.resume()
     }
 }
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension MyMapViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parkingList.count
