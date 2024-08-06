@@ -22,7 +22,10 @@ class MyMapViewController: UIViewController, CLLocationManagerDelegate {
     var point:MKPointAnnotation!
     var c:CLLocation!
     let refreshControl = UIRefreshControl()
-    var parkingList = [MainData](){
+    let defaultLatitude: CLLocationDegrees = 25.136299
+    let defaultLongitude: CLLocationDegrees = 120.66629
+    
+    var parkingList = [MainData]() {
         didSet{
             //do something
             //update ui
@@ -46,31 +49,25 @@ class MyMapViewController: UIViewController, CLLocationManagerDelegate {
         postToServerFunction { (parkings) -> Void in
             for parking in parkings {
                 let mainData = MainData()
-//                mainData.title = parking.object("parking_name") as! String
-//                mainData.addressP = parking.object("parking_address") as! String
-//                mainData.toll_car = parking.object("toll_car") as! String
                 self.parkingList.append(mainData)
-//                //update ui
-//                self.tableView.reloadData()
+
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         point = MKPointAnnotation()
-        //point.coordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
-        point.coordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
+        point.coordinate = CLLocationCoordinate2DMake(defaultLatitude, defaultLongitude)
         point.title = "台中市"
         point.subtitle = "所在位置"
         self.myMapView.addAnnotation(point)
     
         //放大效果
-        let track = CLLocationCoordinate2D(latitude: 24.136299, longitude: 120.66629)
+        let track = CLLocationCoordinate2D(latitude: defaultLatitude, longitude: defaultLongitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         _ = MKCoordinateRegion(center: track, span: span)
         
-        //self.myMap.centerCoordinate = CLLocationCoordinate2DMake(c.coordinate.latitude, c.coordinate.longitude)
-        self.myMapView.centerCoordinate = CLLocationCoordinate2DMake(24.136299, 120.66629)
+        self.myMapView.centerCoordinate = CLLocationCoordinate2DMake(defaultLatitude, defaultLongitude)
     }
 
     override func didReceiveMemoryWarning() {
