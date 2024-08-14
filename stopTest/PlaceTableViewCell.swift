@@ -16,7 +16,7 @@ class PlaceTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.backgroundColor = UIColor.white
     }
     
     func setData(mapData: MainData) {

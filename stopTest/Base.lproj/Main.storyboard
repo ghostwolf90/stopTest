@@ -21,14 +21,24 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpW-ib-hQY">
                                         <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的導航" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sy-XG-txC">
+                                                <rect key="frame" x="157.66666666666666" y="13.666666666666671" width="77.666666666666657" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="5n1-hO-x2Y"/>
                                             <constraint firstAttribute="height" constant="50" id="R09-td-LWg"/>
+                                            <constraint firstItem="8sy-XG-txC" firstAttribute="centerX" secondItem="rpW-ib-hQY" secondAttribute="centerX" id="pAf-CR-uYp"/>
+                                            <constraint firstItem="8sy-XG-txC" firstAttribute="centerY" secondItem="rpW-ib-hQY" secondAttribute="centerY" id="sDg-LE-lJc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rpW-ib-hQY" secondAttribute="bottom" id="B19-S6-AiY"/>
                                     <constraint firstItem="rpW-ib-hQY" firstAttribute="leading" secondItem="bSn-2V-9sa" secondAttribute="leading" id="Qzg-0T-Xp1"/>

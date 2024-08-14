@@ -16,13 +16,17 @@ struct MainData {
     var lattitude: Double = 0.0
     var longitude: Double = 0.0
     
+    init(addressP: String, title: String, toll_car: String, time: String, lattitude: Double, longitude: Double) {
+        self.addressP = addressP
+        self.title = title
+        self.toll_car = toll_car
+        self.time = time
+        self.lattitude = lattitude
+        self.longitude = longitude
+    }
+    
     init() {
-        addressP                = ""
-        title                   = ""
-        toll_car                = ""
-        time                    = ""
-        lattitude               = 0.0
-        longitude               = 0.0        
+        
     }
     
 }

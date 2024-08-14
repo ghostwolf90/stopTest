@@ -57,11 +57,6 @@ class ParkingData {
         
         for result in parking {
             let mainData = MainData()
-//            mainData.title = result.object("parking_name") as! String
-//            mainData.addressP = result.object("parking_address") as! String
-//            mainData.toll_car = result.object("toll_car") as! String
-            //mainData.lattitude = result.objectForKey("lattiude") as! Double
-            //mainData.longitude = result.objectForKey("longitude") as! Double
             list.append(mainData)
         }
         completion(self.list)

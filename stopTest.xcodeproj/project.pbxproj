@@ -15,34 +15,20 @@
 		5FDCCA471B606FEA00135D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCCA451B606FEA00135D45 /* Main.storyboard */; };
 		5FDCCA491B606FEA00135D45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCCA481B606FEA00135D45 /* Images.xcassets */; };
 		5FDCCA4C1B606FEA00135D45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FDCCA4A1B606FEA00135D45 /* LaunchScreen.xib */; };
-		5FDCCA581B606FEA00135D45 /* stopTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDCCA571B606FEA00135D45 /* stopTestTests.swift */; };
 		5FDCCA621B60709600135D45 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDCCA611B60709600135D45 /* MapKit.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5FDCCA521B606FEA00135D45 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5FDCCA341B606FEA00135D45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5FDCCA3B1B606FEA00135D45;
-			remoteInfo = stopTest;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5FD796D41B66E8A500804697 /* MainData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainData.swift; sourceTree = "<group>"; };
 		5FD796D61B673AC400804697 /* ParkingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingData.swift; sourceTree = "<group>"; };
 		5FD796D81B6AD63E00804697 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
-		5FDCCA3C1B606FEA00135D45 /* stopTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stopTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FDCCA3C1B606FEA00135D45 /* 地標通.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "地標通.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDCCA401B606FEA00135D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FDCCA411B606FEA00135D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FDCCA431B606FEA00135D45 /* MyMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapViewController.swift; sourceTree = "<group>"; };
 		5FDCCA461B606FEA00135D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FDCCA481B606FEA00135D45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5FDCCA4B1B606FEA00135D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5FDCCA511B606FEA00135D45 /* stopTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = stopTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FDCCA561B606FEA00135D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FDCCA571B606FEA00135D45 /* stopTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stopTestTests.swift; sourceTree = "<group>"; };
 		5FDCCA611B60709600135D45 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -52,13 +38,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FDCCA621B60709600135D45 /* MapKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FDCCA4E1B606FEA00135D45 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +58,6 @@
 			children = (
 				5FDCCA611B60709600135D45 /* MapKit.framework */,
 				5FDCCA3E1B606FEA00135D45 /* stopTest */,
-				5FDCCA541B606FEA00135D45 /* stopTestTests */,
 				5FDCCA3D1B606FEA00135D45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,8 +65,7 @@
 		5FDCCA3D1B606FEA00135D45 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5FDCCA3C1B606FEA00135D45 /* stopTest.app */,
-				5FDCCA511B606FEA00135D45 /* stopTestTests.xctest */,
+				5FDCCA3C1B606FEA00135D45 /* 地標通.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,23 +93,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5FDCCA541B606FEA00135D45 /* stopTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				5FDCCA571B606FEA00135D45 /* stopTestTests.swift */,
-				5FDCCA551B606FEA00135D45 /* Supporting Files */,
-			);
-			path = stopTestTests;
-			sourceTree = "<group>";
-		};
-		5FDCCA551B606FEA00135D45 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5FDCCA561B606FEA00135D45 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,26 +110,8 @@
 			);
 			name = stopTest;
 			productName = stopTest;
-			productReference = 5FDCCA3C1B606FEA00135D45 /* stopTest.app */;
+			productReference = 5FDCCA3C1B606FEA00135D45 /* 地標通.app */;
 			productType = "com.apple.product-type.application";
-		};
-		5FDCCA501B606FEA00135D45 /* stopTestTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FDCCA5E1B606FEA00135D45 /* Build configuration list for PBXNativeTarget "stopTestTests" */;
-			buildPhases = (
-				5FDCCA4D1B606FEA00135D45 /* Sources */,
-				5FDCCA4E1B606FEA00135D45 /* Frameworks */,
-				5FDCCA4F1B606FEA00135D45 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5FDCCA531B606FEA00135D45 /* PBXTargetDependency */,
-			);
-			name = stopTestTests;
-			productName = stopTestTests;
-			productReference = 5FDCCA511B606FEA00135D45 /* stopTestTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -191,10 +133,6 @@
 							};
 						};
 					};
-					5FDCCA501B606FEA00135D45 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 5FDCCA3B1B606FEA00135D45;
-					};
 				};
 			};
 			buildConfigurationList = 5FDCCA371B606FEA00135D45 /* Build configuration list for PBXProject "stopTest" */;
@@ -212,7 +150,6 @@
 			projectRoot = "";
 			targets = (
 				5FDCCA3B1B606FEA00135D45 /* stopTest */,
-				5FDCCA501B606FEA00135D45 /* stopTestTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,13 +162,6 @@
 				5FDCCA471B606FEA00135D45 /* Main.storyboard in Resources */,
 				5FDCCA4C1B606FEA00135D45 /* LaunchScreen.xib in Resources */,
 				5FDCCA491B606FEA00135D45 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FDCCA4F1B606FEA00135D45 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,23 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FDCCA4D1B606FEA00135D45 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FDCCA581B606FEA00135D45 /* stopTestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5FDCCA531B606FEA00135D45 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5FDCCA3B1B606FEA00135D45 /* stopTest */;
-			targetProxy = 5FDCCA521B606FEA00135D45 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5FDCCA451B606FEA00135D45 /* Main.storyboard */ = {
@@ -376,12 +290,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4VS4GFB76H;
 				INFOPLIST_FILE = stopTest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "地標通";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "地標通";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -390,49 +307,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4VS4GFB76H;
 				INFOPLIST_FILE = stopTest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "地標通";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "地標通";
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		5FDCCA5F1B606FEA00135D45 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = stopTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stopTest.app/stopTest";
-			};
-			name = Debug;
-		};
-		5FDCCA601B606FEA00135D45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = stopTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.LaiBit.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stopTest.app/stopTest";
 			};
 			name = Release;
 		};
@@ -453,15 +337,6 @@
 			buildConfigurations = (
 				5FDCCA5C1B606FEA00135D45 /* Debug */,
 				5FDCCA5D1B606FEA00135D45 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FDCCA5E1B606FEA00135D45 /* Build configuration list for PBXNativeTarget "stopTestTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5FDCCA5F1B606FEA00135D45 /* Debug */,
-				5FDCCA601B606FEA00135D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
