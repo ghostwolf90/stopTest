@@ -8,8 +8,8 @@ class MyMapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
 
-    let defaultLatitude: CLLocationDegrees = 25.136299
-    let defaultLongitude: CLLocationDegrees = 120.66629
+    let defaultLatitude: CLLocationDegrees = 24.1477
+    let defaultLongitude: CLLocationDegrees = 120.6736
     var currentLocation: CLLocation?
     
     var parkingList = [MainData]() {

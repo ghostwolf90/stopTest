@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5FDCCA3B1B606FEA00135D45"
-               BuildableName = "stopTest.app"
+               BuildableName = "&#x5730;&#x6a19;&#x901a;.app"
                BlueprintName = "stopTest"
                ReferencedContainer = "container:stopTest.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FDCCA3B1B606FEA00135D45"
-            BuildableName = "stopTest.app"
+            BuildableName = "&#x5730;&#x6a19;&#x901a;.app"
             BlueprintName = "stopTest"
             ReferencedContainer = "container:stopTest.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5FDCCA3B1B606FEA00135D45"
-            BuildableName = "stopTest.app"
+            BuildableName = "&#x5730;&#x6a19;&#x901a;.app"
             BlueprintName = "stopTest"
             ReferencedContainer = "container:stopTest.xcodeproj">
          </BuildableReference>
